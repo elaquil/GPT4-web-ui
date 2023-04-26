@@ -1,0 +1,11 @@
+img.avatar{
+    margin-right: 10px !important;
+}
+
+.bg-dark2{
+    background-color: rgba(75,75,75) !important;
+}
+
+.error.error{
+    background-color: darkred !important;
+}

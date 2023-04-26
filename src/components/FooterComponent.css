@@ -1,0 +1,19 @@
+div[contenteditable]:empty::before {
+    content: "Enter a Message";
+    color: black;
+    opacity: 50%;
+}
+
+div[contenteditable].disabled::before {
+    content: "Waiting for response..." !important;
+    color: black;
+    opacity: 50%;
+}
+div[contenteditable].disabled{
+    background-color: rgb(205, 205, 205);
+}
+
+span[contenteditable]{
+    max-height: 200px;
+    overflow-y: auto;
+}
