@@ -8,7 +8,7 @@ import { Configuration, OpenAIApi } from "openai";
 
 
 const configuration = new Configuration({
-    organization: "org-4q0jcon2iC7j3IwTWKaibaMi",
+    organization: import.meta.env.VITE_OPENAI_ORG,
     apiKey: import.meta.env.VITE_OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
@@ -18,57 +18,8 @@ function App() {
     // console.log(response);
     const [chatHistory, setChatHistory] = useState<string>("");
 
-    const intro = "You are a general purpose chatbot. Since you have no built-in memory you can see the previous message history above. Please respong to the query below, keep the context above in mind! Format your response completely neutrally, do not include \"GPT: \"! The prompt is: ";
+    const intro = "You are a general purpose chatbot. You can see the previous message history above. Please respong to the query below, keep the context above in mind! Format your response completely neutrally. The prompt is: ";
 
-    const md = `
-# Markdown testing suite
-
-## Code blocks
-
-\`\`\`python
-def foo():
-    if not bar:
-        return True
-\`\`\`
-
-\`\`\`javascript
-function foo() {
-    if (!bar) {
-        return true;
-    }
-}
-\`\`\`
-
-## Tables
-
-| Syntax      | Description |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
-
-## Task Lists
-
-- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
-- [x] list syntax required (any unordered or ordered list supported)
-- [x] this is a complete item
-- [ ] this is an incomplete item
-
-## Strikethrough
-
-~~this~~
-
-## Emoji
-
-:smile: :+1: :-1: :shipit: :tada: :rocket: :metal: :octocat:
-
-## Heading IDs
-  `;
-    const exampleMessage: IMessage = {
-        id: "1",
-        text: md,
-        createdAt: new Date(),
-        sentBy: "gpt",
-    };
     const [messages, setMessages] = useState<IMessage[]>([]);
 
     const [isInputDisabled, setIsInputDisabled] = useState<boolean>(false);
